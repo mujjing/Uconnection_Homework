@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB54BAC83B98B674A2DE098 /* Pods_Uconnection_Homework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5D1C4D2B1B4933E1C6F9F /* Pods_Uconnection_Homework.framework */; };
 		DB6FDAF5272EE353001CDCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6FDAF4272EE353001CDCF5 /* AppDelegate.swift */; };
 		DB6FDAF7272EE353001CDCF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6FDAF6272EE353001CDCF5 /* SceneDelegate.swift */; };
 		DB6FDAFE272EE35B001CDCF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6FDAFD272EE35B001CDCF5 /* Assets.xcassets */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CD138F55D43754605E89EE7 /* Pods-Uconnection_Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uconnection_Homework.debug.xcconfig"; path = "Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework.debug.xcconfig"; sourceTree = "<group>"; };
+		BB5C83E61FE69CFEA5721B63 /* Pods-Uconnection_Homework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uconnection_Homework.release.xcconfig"; path = "Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework.release.xcconfig"; sourceTree = "<group>"; };
+		C8E5D1C4D2B1B4933E1C6F9F /* Pods_Uconnection_Homework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uconnection_Homework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6FDAF1272EE353001CDCF5 /* Uconnection_Homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uconnection_Homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6FDAF4272EE353001CDCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB6FDAF6272EE353001CDCF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB54BAC83B98B674A2DE098 /* Pods_Uconnection_Homework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B5A3370606F1D004576660E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8E5D1C4D2B1B4933E1C6F9F /* Pods_Uconnection_Homework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAF82E926B18310B1AEF910D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CD138F55D43754605E89EE7 /* Pods-Uconnection_Homework.debug.xcconfig */,
+				BB5C83E61FE69CFEA5721B63 /* Pods-Uconnection_Homework.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DB6FDAE8272EE353001CDCF5 = {
 			isa = PBXGroup;
 			children = (
 				DB6FDAF3272EE353001CDCF5 /* Uconnection_Homework */,
 				DB6FDAF2272EE353001CDCF5 /* Products */,
+				BAF82E926B18310B1AEF910D /* Pods */,
+				7B5A3370606F1D004576660E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB6FDB05272EE35B001CDCF5 /* Build configuration list for PBXNativeTarget "Uconnection_Homework" */;
 			buildPhases = (
+				186D8988BCD61CE57D2EBDE3 /* [CP] Check Pods Manifest.lock */,
 				DB6FDAED272EE353001CDCF5 /* Sources */,
 				DB6FDAEE272EE353001CDCF5 /* Frameworks */,
 				DB6FDAEF272EE353001CDCF5 /* Resources */,
+				DEBB3BA1634C228C6586A019 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +194,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		186D8988BCD61CE57D2EBDE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Uconnection_Homework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEBB3BA1634C228C6586A019 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DB6FDAED272EE353001CDCF5 /* Sources */ = {
@@ -312,6 +381,7 @@
 		};
 		DB6FDB06272EE35B001CDCF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CD138F55D43754605E89EE7 /* Pods-Uconnection_Homework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -340,6 +410,7 @@
 		};
 		DB6FDB07272EE35B001CDCF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB5C83E61FE69CFEA5721B63 /* Pods-Uconnection_Homework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
