@@ -36,7 +36,20 @@ extension UserViewController {
         userTableView.delegate = self
         userTableView.dataSource = self
         
-        getUserData("mujjing")
+        //searchBar
+        userSearchBar.delegate = self
+        userSearchBar.becomeFirstResponder()
+        
+        //검색
+        inputSearchText()
+        
+        //키보드 숨기기
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doneKeyboardAction))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func doneKeyboardAction() {
+        view.endEditing(true)
     }
 }
 
@@ -75,8 +88,8 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? UserTableViewCell else {fatalError()}
         if userItem.count > 0 {
-            let testUserData = userItem[indexPath.row]
-            cell.userSetting(testUserData.avatarURL, testUserData.login)
+            let userData = userItem[indexPath.row]
+            cell.userSetting(userData.avatarURL, userData.login)
         } else {
             cell.userSetting("", "데이터가 없습니다")
         }
@@ -87,4 +100,21 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
+}
+
+//searchBar
+extension UserViewController: UISearchBarDelegate {
+    
+    func inputSearchText(){
+        self.userSearchBar.rx.text.orEmpty
+            .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { searchText in
+                self.getUserData(searchText)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
