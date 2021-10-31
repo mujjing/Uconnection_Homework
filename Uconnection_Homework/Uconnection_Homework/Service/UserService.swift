@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum UserService {
-    case searchUser(name: String)
+    case searchUser(name: String, page: Int)
 }
 
 extension UserService: TargetType {
@@ -43,8 +43,8 @@ extension UserService: TargetType {
     
     var task: Task {
         switch self {
-        case .searchUser(let name):
-        return .requestParameters(parameters: ["q" : name], encoding: URLEncoding.default)
+        case .searchUser(let name, let page):
+            return .requestParameters(parameters: ["q" : name, "page" : page, "per_page" : 20], encoding: URLEncoding.default)
         }
     }
     
