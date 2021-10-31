@@ -18,6 +18,11 @@ class UserViewController: UIViewController {
     let userProvider = MoyaProvider<UserService>()
     var userItem : [UserItem] = []
     
+    var pagingCount = 1
+    var totalCountCheck = false
+    var totalCount = 0
+    var searchWord = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -57,7 +62,8 @@ extension UserViewController {
 extension UserViewController {
     
     func getUserData(_ name: String) {
-        userProvider.rx.request(.searchUser(name: name))
+        self.pagingCount = 1
+        userProvider.rx.request(.searchUser(name: name, page: pagingCount))
             .subscribe { [weak self] (result) in
                 switch result {
                 case .success(let response):
@@ -65,8 +71,34 @@ extension UserViewController {
                     do {
                         self?.userItem.removeAll()
                         let decoded = try JSONDecoder().decode(User.self, from: responseData)
+                        if decoded.totalCount ?? 0 > 20 {
+                            self?.totalCountCheck = true
+                            self?.totalCount = decoded.totalCount ?? 0
+                            self?.searchWord = name
+                        }
                         self?.userItem = decoded.items ?? []
                         self?.userTableView.reloadData()
+                    } catch (let err) {
+                        debugPrint("err : \(err)")
+                    }
+                case .error(let error):
+                    debugPrint("error : \(error)")
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func getExtensionUserData(_ name: String, _ count: Int) {
+        userProvider.rx.request(.searchUser(name: name, page: count))
+            .subscribe { [weak self] (result) in
+                switch result {
+                case .success(let response):
+                    let responseData = response.data
+                    do {
+                        let decoded = try JSONDecoder().decode(User.self, from: responseData)
+                        for users in decoded.items ?? [] {
+                            self?.userItem.append(users)
+                        }
                     } catch (let err) {
                         debugPrint("err : \(err)")
                     }
@@ -100,6 +132,17 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
+    func createSpinerFooterView() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
+    }
+    
 }
 
 //searchBar
@@ -116,5 +159,29 @@ extension UserViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension UserViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (userTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            if totalCountCheck {
+                if self.totalCount / 20 >= self.pagingCount {
+                    self.userTableView.tableFooterView = self.createSpinerFooterView()
+                    print("pppppppp : \(self.userItem.count)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        self.pagingCount += 1
+                        self.getExtensionUserData(self.searchWord, self.pagingCount)
+                        self.userTableView.tableFooterView = nil
+                        self.userTableView.reloadData()
+                    }
+                } else {
+                    self.userTableView.tableFooterView = nil
+                }
+            } else {
+                self.userTableView.tableFooterView = nil
+            }
+        }
     }
 }
