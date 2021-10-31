@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserTableViewCell: UITableViewCell {
 
@@ -15,5 +16,15 @@ class UserTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func userSetting(_ imageUrl: String, _ loginName: String) {
+        //image
+        let url = URL(string: imageUrl)
+        userImage.kf.setImage(with: url)
+        userImage.layer.cornerRadius = userImage.frame.height / 2
+        
+        //name
+        userLabel.text = loginName
     }
 }
