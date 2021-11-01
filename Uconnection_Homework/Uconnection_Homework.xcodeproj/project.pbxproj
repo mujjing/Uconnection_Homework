@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7BB54BAC83B98B674A2DE098 /* Pods_Uconnection_Homework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5D1C4D2B1B4933E1C6F9F /* Pods_Uconnection_Homework.framework */; };
+		DB37BB6D27302BAB00A037DC /* AssociatableObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37BB6B27302BAB00A037DC /* AssociatableObjectProtocol.swift */; };
+		DB37BB6E27302BAB00A037DC /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37BB6C27302BAB00A037DC /* NSObject.swift */; };
+		DB37BB7027302BB300A037DC /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37BB6F27302BB300A037DC /* UserService.swift */; };
+		DB37BB7227302BBD00A037DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37BB7127302BBD00A037DC /* User.swift */; };
 		DB6FDAF5272EE353001CDCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6FDAF4272EE353001CDCF5 /* AppDelegate.swift */; };
 		DB6FDAF7272EE353001CDCF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6FDAF6272EE353001CDCF5 /* SceneDelegate.swift */; };
 		DB6FDAFE272EE35B001CDCF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6FDAFD272EE35B001CDCF5 /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 		5CD138F55D43754605E89EE7 /* Pods-Uconnection_Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uconnection_Homework.debug.xcconfig"; path = "Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework.debug.xcconfig"; sourceTree = "<group>"; };
 		BB5C83E61FE69CFEA5721B63 /* Pods-Uconnection_Homework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uconnection_Homework.release.xcconfig"; path = "Target Support Files/Pods-Uconnection_Homework/Pods-Uconnection_Homework.release.xcconfig"; sourceTree = "<group>"; };
 		C8E5D1C4D2B1B4933E1C6F9F /* Pods_Uconnection_Homework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uconnection_Homework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB37BB6B27302BAB00A037DC /* AssociatableObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatableObjectProtocol.swift; sourceTree = "<group>"; };
+		DB37BB6C27302BAB00A037DC /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		DB37BB6F27302BB300A037DC /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DB37BB7127302BBD00A037DC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB6FDAF1272EE353001CDCF5 /* Uconnection_Homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uconnection_Homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6FDAF4272EE353001CDCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB6FDAF6272EE353001CDCF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +66,32 @@
 				5CD138F55D43754605E89EE7 /* Pods-Uconnection_Homework.debug.xcconfig */,
 				BB5C83E61FE69CFEA5721B63 /* Pods-Uconnection_Homework.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB37BB6827302B7C00A037DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB37BB7127302BBD00A037DC /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DB37BB6927302B8100A037DC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DB37BB6B27302BAB00A037DC /* AssociatableObjectProtocol.swift */,
+				DB37BB6C27302BAB00A037DC /* NSObject.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DB37BB6A27302B8F00A037DC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DB37BB6F27302BB300A037DC /* UserService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		DB6FDAE8272EE353001CDCF5 = {
@@ -83,6 +115,9 @@
 		DB6FDAF3272EE353001CDCF5 /* Uconnection_Homework */ = {
 			isa = PBXGroup;
 			children = (
+				DB37BB6A27302B8F00A037DC /* Service */,
+				DB37BB6927302B8100A037DC /* Extension */,
+				DB37BB6827302B7C00A037DC /* Model */,
 				DB6FDB0A272EE39B001CDCF5 /* Scene */,
 				DB6FDB09272EE38D001CDCF5 /* Launch */,
 				DB6FDB08272EE36C001CDCF5 /* Resource */,
@@ -242,10 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB37BB7027302BB300A037DC /* UserService.swift in Sources */,
 				DB6FDB11272EE3FF001CDCF5 /* UserTableViewCell.swift in Sources */,
 				DB6FDAF5272EE353001CDCF5 /* AppDelegate.swift in Sources */,
 				DB6FDB0F272EE3DF001CDCF5 /* UserViewController.swift in Sources */,
+				DB37BB7227302BBD00A037DC /* User.swift in Sources */,
+				DB37BB6E27302BAB00A037DC /* NSObject.swift in Sources */,
 				DB6FDAF7272EE353001CDCF5 /* SceneDelegate.swift in Sources */,
+				DB37BB6D27302BAB00A037DC /* AssociatableObjectProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
