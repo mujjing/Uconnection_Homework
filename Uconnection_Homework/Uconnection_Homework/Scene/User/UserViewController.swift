@@ -163,13 +163,11 @@ extension UserViewController: UISearchBarDelegate {
 }
 
 extension UserViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (userTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            if userTableView.contentOffset.y > (userTableView.contentSize.height - userTableView.frame.size.height){
             if totalCountCheck {
                 if self.totalCount / 20 >= self.pagingCount {
                     self.userTableView.tableFooterView = self.createSpinerFooterView()
-                    print("pppppppp : \(self.userItem.count)")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                         self.pagingCount += 1
                         self.getExtensionUserData(self.searchWord, self.pagingCount)
